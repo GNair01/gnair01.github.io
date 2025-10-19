@@ -1,31 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0">
-    <title>Tennis</title>
-        <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis - My Passion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        </style>
-        
-        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #ffd700;
+        }
+
+        h1 {
+            color: #ffd700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: #ffd700;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .divider {
+            color: #ffd700;
+            margin: 0 0.5rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        section {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        section.active {
+            display: block;
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        figure {
+            margin: 2rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        figcaption {
+            margin-top: 1rem;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .ai-prompt {
+            font-style: italic;
+            color: #d0d0d0;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ffd700;
+        }
+
+        th {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        form {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        button {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #fff;
+            transform: scale(1.05);
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #ffd700;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            text-align: center;
+            border-top: 3px solid #ffd700;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .validation-links {
+            margin-top: 1rem;
+        }
+
+        .validation-links a {
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .prompt-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid #ffd700;
+            border-radius: 5px;
+        }
+
+        .prompt-box strong {
+            color: #ffd700;
+        }
+    </style>
 </head>
 <body>
     <header>
-    <h1>Tennis</h1>
-    <nav>
-        <a href="#what" class="nav-link" data-section="what">What</a>
-            <span class="divider">☷</span>
+        <h1>Tennis</h1>
+        <nav>
+            <a href="#what" class="nav-link" data-section="what">What</a>
+            <span class="divider">🎾</span>
             <a href="#who" class="nav-link" data-section="who">Who</a>
-            <span class="divider">☷</span>
+            <span class="divider">🎾</span>
             <a href="#when" class="nav-link" data-section="when">When</a>
-            <span class="divider">☷</span>
+            <span class="divider">🎾</span>
             <a href="#where" class="nav-link" data-section="where">Where</a>
-            <span class="divider">☷</span>
+            <span class="divider">🎾</span>
             <a href="#how" class="nav-link" data-section="how">How</a>
-            <span class="divider">☷</span>
+            <span class="divider">🎾</span>
             <a href="#why" class="nav-link" data-section="why">Why</a>
-            <span class="divider">☷</span>
-    </nav>
-   <p></p>
-   </header>
+            <span class="divider">🎾</span>
+            <a href="#ai-prompts" class="nav-link" data-section="ai-prompts">AI Prompts</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="what" class="active">
+            <h2>What is Tennis?</h2>
+            <p>Tennis is a racket sport played individually against a single opponent (singles) or between two teams of two players each (doubles). Players use a stringed racket to strike a hollow rubber ball covered with felt over a net into the opponent's court. The objective is to play the ball in such a way that the opponent cannot return it successfully.</p>
+            
+            <div class="content-box">
+                <p>Tennis originated in Birmingham, England, in the late 19th century as lawn tennis. It has roots in the ancient game of real tennis, which was played indoors. Today, tennis is played at all levels of society and at all ages. The sport can be played by anyone who can hold a racket, including wheelchair users.</p>
+                <p>The modern game involves a variety of shots including serves, forehands, backhands, volleys, and smashes. Professional tennis is played on various surfaces including grass, clay, and hard courts, each offering unique playing characteristics that affect ball speed and player movement.</p>
+            </div>
+
+            <figure>
+                <img src="images/tennis-court.jpg" alt="Professional tennis court" width="800" height="500">
+                <figcaption>A professional tennis court ready for competition</figcaption>
+            </figure>
+
+            <table>
+                <tr>
+                    <th>Court Type</th>
+                    <th>Surface</th>
+                    <th>Speed</th>
+                    <th>Major Tournament</th>
+                </tr>
+                <tr>
+                    <td>Grass</td>
+                    <td>Natural grass</td>
+                    <td>Fast</td>
+                    <td>Wimbledon</td>
+                </tr>
+                <tr>
+                    <td>Clay</td>
+                    <td>Crushed brick/stone</td>
+                    <td>Slow</td>
+                    <td>French Open</td>
+                </tr>
+                <tr>
+                    <td>Hard Court</td>
+                    <td>Asphalt/Concrete</td>
+                    <td>Medium</td>
+                    <td>US Open, Australian Open</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="who">
+            <h2>Who Plays Tennis?</h2>
+            <p>Tennis is a universal sport enjoyed by millions of people worldwide, from recreational players to professional athletes. The sport welcomes players of all ages, from young children just learning the basics to seniors who continue to enjoy the game well into their retirement years.</p>
+
+            <div class="content-box">
+                <h3>My Tennis Journey</h3>
+                <p>I play tennis at Blakney Racket Club, where I compete in both doubles and singles matches. Our team recently won the entire league championship, which was an incredible achievement! Playing doubles taught me the importance of teamwork and communication on the court, while singles matches helped me develop mental toughness and strategic thinking. The competitive environment at Blakney has pushed me to improve my game and connect with fellow tennis enthusiasts.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Professional Players</h3>
+                <p>The professional tennis circuit features some of the world's most recognizable athletes. Legends like Roger Federer, Rafael Nadal, Serena Williams, and Novak Djokovic have elevated the sport to new heights. These athletes compete in Grand Slam tournaments and ATP/WTA events around the globe, inspiring millions of fans and aspiring players.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Recreational Players</h3>
+                <p>Beyond the professional level, tennis thrives as a recreational activity. Local clubs, community centers, and public courts provide opportunities for people to play casually or in organized leagues. Many players enjoy tennis as a social activity, playing doubles with friends or participating in club tournaments.</p>
+            </div>
+
+            <figure>
+                <img src="images/tennis-players.jpg" alt="Diverse group of tennis players" width="800" height="500">
+                <figcaption>Tennis players of all ages and skill levels</figcaption>
+            </figure>
+            
+
+            <div class="content-box">
+                <h3>Youth Development</h3>
+                <p>Junior tennis programs worldwide introduce children to the sport, teaching fundamental skills, sportsmanship, and physical fitness. Many professional players began their journey in youth programs, developing their skills through dedicated practice and competition.</p>
+            </div>
+        </section>
+
+        <section id="when">
+            <h2>When to Play Tennis?</h2>
+            <p>Tennis can be enjoyed year-round, though the best times to play depend on your location, climate, and personal preferences. Understanding the tennis calendar and optimal playing conditions can enhance your experience on the court.</p>
+
+            <div class="content-box">
+                <h3>Professional Tennis Calendar</h3>
+                <p>The professional tennis season runs nearly year-round, beginning in January with the Australian Open and continuing through November with the ATP Finals. The four Grand Slam tournaments are spread throughout the year: Australian Open (January), French Open (May-June), Wimbledon (June-July), and US Open (August-September).</p>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Season</th>
+                    <th>Best For</th>
+                    <th>Considerations</th>
+                </tr>
+                <tr>
+                    <td>Spring</td>
+                    <td>Outdoor play begins</td>
+                    <td>Mild temperatures, occasional rain</td>
+                </tr>
+                <tr>
+                    <td>Summer</td>
+                    <td>Peak playing season</td>
+                    <td>Hot weather, stay hydrated</td>
+                </tr>
+                <tr>
+                    <td>Fall</td>
+                    <td>Comfortable conditions</td>
+                    <td>Perfect temperatures, beautiful weather</td>
+                </tr>
+                <tr>
+                    <td>Winter</td>
+                    <td>Indoor tennis</td>
+                    <td>Indoor facilities, heated courts</td>
+                </tr>
+            </table>
+
+            <figure>
+                <img src="images/tennis-seasons.jpg" alt="Tennis court in different seasons" width="800" height="500">
+                <figcaption>Tennis courts through the seasons</figcaption>
+            </figure>
+            
+            <div class="content-box">
+                <h3>Best Times of Day</h3>
+                <p>Early morning (6-9 AM) offers cooler temperatures and less crowded courts. Evening sessions (5-8 PM) are popular for those with work schedules. Midday play should be avoided during summer months due to intense heat and sun exposure.</p>
+            </div>
+        </section>
+
+        <section id="where">
+            <h2>Where to Play Tennis?</h2>
+            <p>Tennis courts can be found in various locations worldwide, from public parks to exclusive private clubs. The accessibility of tennis facilities makes it easy for players to find suitable venues for their skill level and preferences.</p>
+
+            <div class="content-box">
+                <h3>Public Courts</h3>
+                <p>Many cities and towns maintain public tennis courts in parks and recreational areas. These courts are typically free or require a small fee, making tennis accessible to everyone. Public courts often operate on a first-come, first-served basis, though some allow reservations.</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Private Tennis Clubs</h3>
+                <p>Tennis clubs offer premium facilities including well-maintained courts, professional coaching, organized leagues, and social events. Membership provides access to indoor courts, allowing year-round play regardless of weather conditions. Many clubs also feature amenities like pro shops, lounges, and fitness centers.</p>
+            </div>
+
+            <figure>
+                <img src="images/tennis-locations.jpg" alt="Various tennis court locations" width="800" height="500">
+                <figcaption>Tennis courts in different settings around the world</figcaption>
+            </figure>
+            
+
+            <table>
+                <tr>
+                    <th>Venue Type</th>
+                    <th>Cost</th>
+                    <th>Availability</th>
+                    <th>Amenities</th>
+                </tr>
+                <tr>
+                    <td>Public Parks</td>
+                    <td>Free - $10/hour</td>
+                    <td>High</td>
+                    <td>Basic</td>
+                </tr>
+                <tr>
+                    <td>Community Centers</td>
+                    <td>$15-30/hour</td>
+                    <td>Medium</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>Private Clubs</td>
+                    <td>Membership required</td>
+                    <td>Members only</td>
+                    <td>Excellent</td>
+                </tr>
+                <tr>
+                    <td>Indoor Facilities</td>
+                    <td>$25-50/hour</td>
+                    <td>Year-round</td>
+                    <td>Climate controlled</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="how">
+            <h2>How to Play Tennis?</h2>
+            <p>Learning tennis involves mastering fundamental techniques, understanding the rules, and developing physical fitness. Whether you're a complete beginner or looking to improve your game, following a structured approach will accelerate your progress.</p>
+
+            <div class="content-box">
+                <h3>Essential Equipment</h3>
+                <ul>
+                    <li><strong>Tennis Racket:</strong> Choose a racket appropriate for your skill level and playing style</li>
+                    <li><strong>Tennis Balls:</strong> Use pressurized balls for regular play</li>
+                    <li><strong>Proper Footwear:</strong> Tennis shoes with good lateral support</li>
+                    <li><strong>Athletic Clothing:</strong> Comfortable, moisture-wicking apparel</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h3>Basic Techniques</h3>
+                <p><strong>The Serve:</strong> Begin each point by tossing the ball and striking it into the opponent's service box. A good serve is crucial for controlling the point.</p>
+                <p><strong>Forehand:</strong> The most common groundstroke, hit with the palm facing forward. Focus on proper grip, footwork, and follow-through.</p>
+                <p><strong>Backhand:</strong> Can be executed with one or two hands. Requires good positioning and weight transfer.</p>
+                <p><strong>Volley:</strong> A shot hit before the ball bounces, typically executed near the net. Requires quick reflexes and soft hands.</p>
+            </div>
+
+            <figure>
+                <img src="images/tennis-techniques.jpg" alt="Tennis player demonstrating proper form" width="800" height="500">
+                <figcaption>Proper tennis technique and form</figcaption>
+            </figure>
+        </section>
+
+        <section id="why">
+            <h2>Why Play Tennis?</h2>
+            <p>Tennis offers numerous physical, mental, and social benefits that make it one of the most rewarding sports to pursue. From improving cardiovascular health to building lasting friendships, tennis enriches lives in countless ways.</p>
+
+            <div class="content-box">
+                <h3>Physical Health Benefits</h3>
+                <ul>
+                    <li><strong>Cardiovascular Fitness:</strong> Tennis provides an excellent aerobic workout, improving heart health and endurance</li>
+                    <li><strong>Strength and Flexibility:</strong> Regular play develops muscle tone, particularly in the legs, core, and arms</li>
+                    <li><strong>Coordination and Balance:</strong> The sport enhances hand-eye coordination and overall body control</li>
+                    <li><strong>Weight Management:</strong> An hour of tennis can burn 400-600 calories</li>
+                    <li><strong>Bone Health:</strong> Weight-bearing activity strengthens bones and reduces osteoporosis risk</li>
+                </ul>
+            </div>
+
+            <div class="content-box">
+                <h3>Mental Benefits</h3>
+                <p>Tennis is often called "chess on the move" because it requires strategic thinking, problem-solving, and mental toughness. Players must constantly adapt their tactics, manage emotions under pressure, and maintain focus throughout matches. These mental challenges improve cognitive function and build resilience that transfers to other areas of life.</p>
+            </div>
+
+            <figure>
+                <img src="images/tennis-benefits.jpg" alt="Happy tennis players celebrating" width="800" height="500">
+                <figcaption>The joy and benefits of playing tennis</figcaption>
+            </figure>
+            
+            <div class="content-box">
+                <h3>Social Connections</h3>
+                <p>Tennis creates opportunities to meet people and build friendships. Whether playing doubles with friends, joining a club league, or participating in tournaments, the tennis community is welcoming and supportive. Many lifelong friendships begin on the tennis court.</p>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Benefit Category</th>
+                    <th>Specific Advantages</th>
+                    <th>Impact Level</th>
+                </tr>
+                <tr>
+                    <td>Physical Health</td>
+                    <td>Cardio, strength, flexibility</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Mental Health</td>
+                    <td>Stress relief, focus, confidence</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Social</td>
+                    <td>Friendships, community, networking</td>
+                    <td>Medium-High</td>
+                </tr>
+                <tr>
+                    <td>Longevity</td>
+                    <td>Lifetime sport, all ages</td>
+                    <td>High</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="ai-prompts">
+            <h2>AI Prompts Used</h2>
+            <p>This website was created with assistance from AI tools. Below are the prompts used to generate various elements of this project:</p>
+
+            <div class="prompt-box">
+                <strong>AI Model Used:</strong> Amazon Q Developer
+            </div>>
+
+            <div class="prompt-box">
+                <strong>CSS Styling:</strong>
+                <p>The embedded stylesheet was developed with AI assistance to create a visually appealing design that follows CRAP principles (Contrast, Repetition, Alignment, Proximity) and meets all assignment requirements including non-default fonts, custom colors, and styled links.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Designed by <a href="../index.html">Gokul Nair</a></p>
+        <div class="validation-links">
+            <a href="https://validator.w3.org/nu/?doc=https://webpages.charlotte.edu/gnair1/itis3135/hobby/">HTML Validation</a> |
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://webpages.charlotte.edu/gnair1/itis3135/hobby/">CSS Validation</a> |
+            <a href="https://wave.webaim.org/report#/https://webpages.charlotte.edu/gnair1/itis3135/hobby/">Accessibility Check</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSection = this.getAttribute('data-section');
+                    
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    document.getElementById(targetSection).classList.add('active');
+                    
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
 </html>
